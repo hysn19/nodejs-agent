@@ -1,6 +1,5 @@
 // transactions.js
-
-const { Api, JsonRpc } = require("eosjs");
+const { Api, JsonRpc, RpcError } = require("eosjs");
 const { JsSignatureProvider } = require("eosjs/dist/eosjs-jssig"); // development only
 const fetch = require("node-fetch"); // node only
 const { TextDecoder, TextEncoder } = require("util"); // node only
@@ -18,41 +17,9 @@ const api = new Api({
 });
 
 // Sending a transaction
-(async () => {
+async function newaccount(newaccountName) {
   try {
-    // --------------------------------
-    // transfer
-    // --------------------------------
-    // const result = await api.transact(
-    //   {
-    //     actions: [
-    //       {
-    //         account: "eosio.token",
-    //         name: "transfer",
-    //         authorization: [
-    //           {
-    //             actor: "swlee",
-    //             permission: "active"
-    //           }
-    //         ],
-    //         data: {
-    //           from: "swlee",
-    //           to: "omnione",
-    //           quantity: "0.0001 EOS",
-    //           memo: ""
-    //         }
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     blocksBehind: 3,
-    //     expireSeconds: 30
-    //   }
-    // );
-    // --------------------------------
-    // Create New Account (multiple actions)
-    // --------------------------------
-    const result = await api.transact(
+    const resp = await api.transact(
       {
         actions: [
           {
@@ -66,7 +33,7 @@ const api = new Api({
             ],
             data: {
               creator: "eosio",
-              name: "swlee5",
+              name: newaccountName,
               owner: {
                 threshold: 1,
                 keys: [
@@ -104,7 +71,7 @@ const api = new Api({
             ],
             data: {
               payer: "eosio",
-              receiver: "swlee5",
+              receiver: newaccountName,
               bytes: 8192
             }
           },
@@ -119,7 +86,7 @@ const api = new Api({
             ],
             data: {
               from: "eosio",
-              receiver: "swlee5",
+              receiver: newaccountName,
               stake_net_quantity: "1.0000 EOS",
               stake_cpu_quantity: "1.0000 EOS",
               transfer: false
@@ -133,9 +100,51 @@ const api = new Api({
       }
     );
     // --------------------------------
-    console.dir("\ntransaction result:" + result);
+    console.dir(resp);
+    return resp;
   } catch (e) {
-    console.log("\nCaught exception: " + e);
+    console.log("\nCaught exception:" + e);
     if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2));
   }
-})();
+}
+
+async function transfer(memo) {
+  var memo;
+  try {
+    const resp = await api.transact(
+      {
+        actions: [
+          {
+            account: "eosio.token",
+            name: "transfer",
+            authorization: [
+              {
+                actor: "swlee",
+                permission: "active"
+              }
+            ],
+            data: {
+              from: "swlee",
+              to: "omnione",
+              quantity: "0.0001 EOS",
+              memo: memo
+            }
+          }
+        ]
+      },
+      {
+        blocksBehind: 3,
+        expireSeconds: 30
+      }
+    );
+    // --------------------------------
+    console.dir(resp);
+    return resp;
+  } catch (e) {
+    console.log("\nCaught exception:" + e);
+    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2));
+  }
+}
+
+module.exports.newaccount = newaccount;
+module.exports.transfer = transfer;

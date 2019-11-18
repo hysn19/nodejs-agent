@@ -1,206 +1,93 @@
 // server.js
+const express = require("express");
+const app = express();
 
-// const http = require("http");
-
-// const hostname = "127.0.0.1";
-// const port = 3000;
-
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader("Content-Type", "text/plain");
-//   res.end("Hello World\n");
-// });
-
-// server.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-// });
-
-// const express = require("express");
-// const app = express();
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!\n");
-// });
-// app.get("/index", (req, res) => {
-//   res.send("Hello World! aaaaaa \n");
-// });
-
-// app.listen(3000, () => {
-//   console.log("Example app listening on port 3000!");
-// });
-
-// --------------------------------------
-
-// CommonJS
-const { Api, JsonRpc, RpcError } = require("eosjs");
-const { JsSignatureProvider } = require("eosjs/dist/eosjs-jssig"); // development only
-const fetch = require("node-fetch"); // node only; not needed in browsers // setup : npm install node-fetch --save
-const { TextEncoder, TextDecoder } = require("util"); // node only; native TextEncoder/Decoder
-// const { TextEncoder, TextDecoder } = require("text-encoding"); // React Native, IE11, and Edge Browsers only
-
-// Signature Provider
-const defaultPrivateKey = "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"; // local node prikey
-const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
-
-// JSON-RPC
-const rpc = new JsonRpc("http://127.0.0.1:8888", { fetch });
-
-// API
-const api = new Api({
-  rpc,
-  signatureProvider,
-  textDecoder: new TextDecoder(),
-  textEncoder: new TextEncoder()
+app.get("/", (req, res) => {
+  res.send("hello world!\n");
 });
 
-// Sending a transaction
-(async () => {
-  try {
-    // --------------------------------
-    // get info
-    // --------------------------------
-    const result = await api.transact(
+app.get("/newaccount", (req, res) => {
+  var newaccountName = "selee1";
+
+  var getapi = require("./transactions.js");
+  getapi.newaccount(newaccountName).then(resp => {
+    res.send(resp);
+  });
+});
+
+app.get("/transfer", (req, res) => {
+  var memo = {
+    authentication: [
       {
-        actions: [
-          {
-            account: "eosio",
-            name: "getinfo",
-            authorization: [
-              {
-                actor: "swlee",
-                permission: "active"
-              }
-            ],
-            data: {
-              from: "swlee",
-              to: "omnione",
-              quantity: "0.0001 EOS",
-              memo: ""
-            }
-          }
-        ]
-      },
-      {
-        blocksBehind: 3,
-        expireSeconds: 30
+        publicKey: "did:omn:3F7BRt7Dpkvqm2da21uUPsJMXMRk#key-1"
       }
-    );
-    // --------------------------------
-    // transfer
-    // --------------------------------
-    // const result = await api.transact(
-    //   {
-    //     actions: [
-    //       {
-    //         account: "eosio.token",
-    //         name: "transfer",
-    //         authorization: [
-    //           {
-    //             actor: "swlee",
-    //             permission: "active"
-    //           }
-    //         ],
-    //         data: {
-    //           from: "swlee",
-    //           to: "omnione",
-    //           quantity: "0.0001 EOS",
-    //           memo: ""
-    //         }
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     blocksBehind: 3,
-    //     expireSeconds: 30
-    //   }
-    // );
-    // --------------------------------
-    // Create New Account (multiple actions)
-    // --------------------------------
-    // const result = await api.transact(
-    //   {
-    //     actions: [
-    //       {
-    //         account: "eosio",
-    //         name: "newaccount",
-    //         authorization: [
-    //           {
-    //             actor: "eosio",
-    //             permission: "active"
-    //           }
-    //         ],
-    //         data: {
-    //           creator: "eosio",
-    //           name: "swlee4",
-    //           owner: {
-    //             threshold: 1,
-    //             keys: [
-    //               {
-    //                 key:
-    //                   "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
-    //                 weight: 1
-    //               }
-    //             ],
-    //             accounts: [],
-    //             waits: []
-    //           },
-    //           active: {
-    //             threshold: 1,
-    //             keys: [
-    //               {
-    //                 key:
-    //                   "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
-    //                 weight: 1
-    //               }
-    //             ],
-    //             accounts: [],
-    //             waits: []
-    //           }
-    //         }
-    //       },
-    //       {
-    //         account: "eosio",
-    //         name: "buyrambytes",
-    //         authorization: [
-    //           {
-    //             actor: "eosio",
-    //             permission: "active"
-    //           }
-    //         ],
-    //         data: {
-    //           payer: "eosio",
-    //           receiver: "swlee4",
-    //           bytes: 8192
-    //         }
-    //       },
-    //       {
-    //         account: "eosio",
-    //         name: "delegatebw",
-    //         authorization: [
-    //           {
-    //             actor: "eosio",
-    //             permission: "active"
-    //           }
-    //         ],
-    //         data: {
-    //           from: "eosio",
-    //           receiver: "swlee4",
-    //           stake_net_quantity: "1.0000 EOS",
-    //           stake_cpu_quantity: "1.0000 EOS",
-    //           transfer: false
-    //         }
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     blocksBehind: 3,
-    //     expireSeconds: 30
-    //   }
-    // );
-    // --------------------------------
-    console.dir(result);
-  } catch (e) {
-    console.log("\nCaught exception: " + e);
-    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2));
-  }
-})();
+    ],
+    id: "did:omn:3F7BRt7Dpkvqm2da21uUPsJMXMRk",
+    proof: {
+      created: "2019-11-18T16:23:49",
+      creator: "did:omn:3F7BRt7Dpkvqm2da21uUPsJMXMRk#key-1",
+      nonce: "2MbmFfgqsuKir4Tafgvaxytrd5cB",
+      signatureValue:
+        "3kAWg4uAAyLTwMGzm3W89Zq2u5mG4Y2QMo2qmqTHYgmPEXEgbNxp11Q3gjDnJuTWgQeq9kS3gh61Wbhtbea7cpG9c",
+      type: "EcdsaKoblitzSignature2016"
+    },
+    publicKey: [
+      {
+        id: "did:omn:3F7BRt7Dpkvqm2da21uUPsJMXMRk#key-1",
+        publicKeyBase58: "iQmXiBxL9MHkGb1PP8gpqspAqxBxxYq43N8ukNyMSV7u",
+        type: "EdDsaSASignatureSecp256k1"
+      }
+    ]
+  };
+
+  var getapi = require("./transactions.js");
+  getapi.transfer(memo).then(resp => {
+    res.send(resp);
+  });
+});
+
+app.get("/get_table_rows", (req, res) => {
+  var contract = "omnione";
+  var account = "omnione";
+  var table = "diddoc";
+
+  var getapi = require("./readingblockchain.js");
+  getapi.get_table_rows(contract, account, table).then(resp => {
+    res.send(resp);
+  });
+});
+
+app.get("/get_currency_balance", (req, res) => {
+  var code = "eosio.token";
+  var account = "omnione";
+  var symbol = "EOS";
+
+  var getapi = require("./readingblockchain.js");
+  getapi.get_currency_balance(code, account, symbol).then(resp => {
+    res.send(resp);
+  });
+});
+
+app.get("/get_account", (req, res) => {
+  var accountName = "omnione";
+  // var accountName = req.params.accountName;
+
+  var getapi = require("./readingblockchain.js");
+  getapi.get_account(accountName).then(resp => {
+    res.send(resp);
+  });
+});
+
+app.get("/get_block", (req, res) => {
+  var blockNumOrId = 1;
+  // var blockNumOrId = req.params.blockNumOrId;
+
+  var getapi = require("./readingblockchain.js");
+  getapi.get_block(blockNumOrId).then(resp => {
+    res.send(resp);
+  });
+});
+
+app.listen(3000, () => {
+  console.log("Example app listening on port 3000!");
+});
