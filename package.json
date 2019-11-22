@@ -2,12 +2,17 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "eosjs": "^20.0.0",
+    "eosjs-ecc": "^4.0.7",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "localStorage": "^1.0.4",
+    "mocha": "^6.2.2",
     "mongoose": "^5.7.11",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "standard-ecies": "^1.0.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "name": "server",
   "version": "1.0.0",
@@ -16,5 +21,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Javascript API for integration with EOSIO-based blockchains using [EOSIO RPC API](https://developers.eos.io/eosio-nodeos/reference).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hysn19/nodejs-eosjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hysn19/nodejs-eosjs/issues"
+  },
+  "homepage": "https://github.com/hysn19/nodejs-eosjs#readme"
 }

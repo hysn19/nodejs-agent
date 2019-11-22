@@ -12,7 +12,7 @@ The official distribution package can be found at [npm](https://www.npmjs.com/pa
 
 ### Add dependency to your project
 
-`yarn add eosjs express node-fetch`
+`yarn add express eosjs eosjs-ecc standard-ecies node-fetch localStorage`
 
 ### Browser Distribution
 
@@ -25,8 +25,8 @@ Clone this repository locally then run `yarn build-web`. The browser distributio
 Importing using ESM syntax is supported using TypeScript, [webpack](https://webpack.js.org/api/module-methods), or [Node.js with `--experimental-modules` flag](https://nodejs.org/api/esm.html)
 
 ```js
-import { Api, JsonRpc, RpcError } from "eosjs";
-import { JsSignatureProvider } from "eosjs/dist/eosjs-jssig"; // development only
+import { Api, JsonRpc, RpcError } from 'eosjs'
+import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig' // development only
 ```
 
 ### CommonJS
@@ -34,11 +34,11 @@ import { JsSignatureProvider } from "eosjs/dist/eosjs-jssig"; // development onl
 Importing using commonJS syntax is supported by Node.js out of the box.
 
 ```js
-const { Api, JsonRpc, RpcError } = require("eosjs");
-const { JsSignatureProvider } = require("eosjs/dist/eosjs-jssig"); // development only
-const fetch = require("node-fetch"); // node only; not needed in browsers
-const { TextEncoder, TextDecoder } = require("util"); // node only; native TextEncoder/Decoder
-const { TextEncoder, TextDecoder } = require("text-encoding"); // React Native, IE11, and Edge Browsers only
+const { Api, JsonRpc, RpcError } = require('eosjs')
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig') // development only
+const fetch = require('node-fetch') // node only; not needed in browsers
+const { TextEncoder, TextDecoder } = require('util') // node only; native TextEncoder/Decoder
+const { TextEncoder, TextDecoder } = require('text-encoding') // React Native, IE11, and Edge Browsers only
 ```
 
 ## Basic Usage
@@ -50,8 +50,8 @@ The Signature Provider holds private keys and is responsible for signing transac
 **_Using the JsSignatureProvider in the browser is not secure and should only be used for development purposes. Use a secure vault outside of the context of the webpage to ensure security when signing transactions in production_**
 
 ```js
-const defaultPrivateKey = "5JtUScZK2XEp3g9gh7F8bwtPTRAkASmNrrftmx4AxDKD5K4zDnr"; // bob
-const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
+const defaultPrivateKey = '5JtUScZK2XEp3g9gh7F8bwtPTRAkASmNrrftmx4AxDKD5K4zDnr' // bob
+const signatureProvider = new JsSignatureProvider([defaultPrivateKey])
 ```
 
 ### JSON-RPC
@@ -59,7 +59,7 @@ const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
 Open a connection to JSON-RPC, include `fetch` when on Node.js.
 
 ```js
-const rpc = new JsonRpc("http://127.0.0.1:8888", { fetch });
+const rpc = new JsonRpc('http://127.0.0.1:8888', { fetch })
 ```
 
 ### API
@@ -72,7 +72,7 @@ const api = new Api({
   signatureProvider,
   textDecoder: new TextDecoder(),
   textEncoder: new TextEncoder()
-});
+})
 ```
 
 ### Sending a transaction
@@ -80,24 +80,24 @@ const api = new Api({
 `transact()` is used to sign and push transactions onto the blockchain with an optional configuration object parameter. This parameter can override the default value of `broadcast: true`, and can be used to fill TAPOS fields given `blocksBehind` and `expireSeconds`. Given no configuration options, transactions are expected to be unpacked with TAPOS fields (`expiration`, `ref_block_num`, `ref_block_prefix`) and will automatically be broadcast onto the chain.
 
 ```js
-(async () => {
+;(async () => {
   const result = await api.transact(
     {
       actions: [
         {
-          account: "eosio.token",
-          name: "transfer",
+          account: 'eosio.token',
+          name: 'transfer',
           authorization: [
             {
-              actor: "useraaaaaaaa",
-              permission: "active"
+              actor: 'useraaaaaaaa',
+              permission: 'active'
             }
           ],
           data: {
-            from: "useraaaaaaaa",
-            to: "useraaaaaaab",
-            quantity: "0.0001 SYS",
-            memo: ""
+            from: 'useraaaaaaaa',
+            to: 'useraaaaaaab',
+            quantity: '0.0001 SYS',
+            memo: ''
           }
         }
       ]
@@ -106,9 +106,9 @@ const api = new Api({
       blocksBehind: 3,
       expireSeconds: 30
     }
-  );
-  console.dir(result);
-})();
+  )
+  console.dir(result)
+})()
 ```
 
 ### Error handling
