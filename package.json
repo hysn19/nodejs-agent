@@ -14,9 +14,9 @@
   "scripts": {
     "start": "node app.js"
   },
-  "name": "server",
+  "name": "app",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app.js",
   "devDependencies": {},
   "keywords": [],
   "author": "",
@@ -24,10 +24,10 @@
   "description": "Javascript API for integration with EOSIO-based blockchains using [EOSIO RPC API](https://developers.eos.io/eosio-nodeos/reference).",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hysn19/nodejs-eosjs.git"
+    "url": "git+https://github.com/hysn19/nodejs-agent.git"
   },
   "bugs": {
-    "url": "https://github.com/hysn19/nodejs-eosjs/issues"
+    "url": "https://github.com/hysn19/nodejs-agent/issues"
   },
-  "homepage": "https://github.com/hysn19/nodejs-eosjs#readme"
+  "homepage": "https://github.com/hysn19/nodejs-agent#readme"
 }
