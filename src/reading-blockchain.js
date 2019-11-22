@@ -1,12 +1,12 @@
 // reading-blockchain.js
-const { JsonRpc } = require('eosjs')
+const { JsonRpc, RpcError } = require('eosjs')
 const fetch = require('node-fetch') // node only; not needed in browsers
 const rpc = new JsonRpc('http://127.0.0.1:8888', { fetch })
 
 // Get table rows
 async function get_table_rows(contract, account, table) {
   try {
-    const resp = await rpc.get_table_rows({
+    return await rpc.get_table_rows({
       json: true, // Get the response as json
       code: contract, // Contract that we target
       scope: account, // Account that owns the data
@@ -14,18 +14,17 @@ async function get_table_rows(contract, account, table) {
       limit: 10 // Maximum number of rows that we want to get
       // reverse = false,         // Optional: Get reversed data
       // show_payer = false,      // Optional: Show ram payer
-    })
-    console.dir(resp)
-    return resp.rows
+    }).rows
   } catch (e) {
     console.log('\nCaught exception:' + e)
+    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
   }
 }
 
 // Get one row by index
 async function get_table_rows_one(contract, account, table, lower_bound) {
   try {
-    const resp = await rpc.get_table_rows({
+    return await rpc.get_table_rows({
       json: true, // Get the response as json
       code: contract, // Contract that we target
       scope: account, // Account that owns the data
@@ -34,9 +33,10 @@ async function get_table_rows_one(contract, account, table, lower_bound) {
       limit: 1 // Here we limit to 1 to get only the
       // reverse = false,            // Optional: Get reversed data
       // show_payer = false,         // Optional: Show ram payer
-    })
+    }).rows
   } catch (e) {
     console.log('\nCaught exception:' + e)
+    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
   }
 }
 
@@ -49,7 +49,7 @@ async function get_table_rows_one_secondary(
   lower_bound
 ) {
   try {
-    const resp = await rpc.get_table_rows({
+    return await rpc.get_table_rows({
       json: true, // Get the response as json
       code: contract, // Contract that we target
       scope: account, // Account that owns the data
@@ -59,44 +59,40 @@ async function get_table_rows_one_secondary(
       limit: 1 // Here we limit to 1 to get only row
       // reverse = false,            // Optional: Get reversed data
       // show_payer = false,         // Optional: Show ram payer
-    })
-    console.dir(resp)
-    return resp
+    }).rows
   } catch (e) {
     console.log('\nCaught exception:' + e)
+    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
   }
 }
 
 // Get currency balance
 async function get_currency_balance(code, account, symbol) {
   try {
-    const resp = await rpc.get_currency_balance(code, account, symbol)
-    console.dir(resp)
-    return resp
+    return await rpc.get_currency_balance(code, account, symbol)
   } catch (e) {
     console.log('\nCaught exception:' + e)
+    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
   }
 }
 
 // Get account info
 async function get_account(accountName) {
   try {
-    const resp = await rpc.get_account(accountName)
-    console.dir(resp)
-    return resp
+    return await rpc.get_account(accountName)
   } catch (e) {
     console.log('\nCaught exception:' + e)
+    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
   }
 }
 
 // Get block
 async function get_block(blockNumOrId) {
   try {
-    const resp = await rpc.get_block(blockNumOrId)
-    console.dir(resp)
-    return resp
+    return await rpc.get_block(blockNumOrId)
   } catch (e) {
     console.log('\nCaught exception:' + e)
+    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
   }
 }
 

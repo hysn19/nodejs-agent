@@ -1,68 +1,114 @@
 // app.js
 const express = require('express')
+var fs = require('fs')
 
-const transactions = require('./src/transactions')
-const reading = require('./src/reading-blockchain')
+const trasnx = require('./src/transactions')
+const rdb = require('./src/reading-blockchain')
 
 const app = express()
 
-app.get('/', (req, res, next) => {
-  res.send('hello world!\n')
-})
-
+/**
+ * Account registration
+ *
+ * @param
+ * @returns
+ */
 app.get('/newaccount', (req, res, next) => {
-  transactions
-    .newaccount(req.query.id)
-    .then(resp => {
-      res.send(resp)
-    })
-    .catch(next) // error passed on to the error handling route
+  const eosId = req.query.eosId
+  const pubKey1 = req.query.pubKey1
+  const pubKey2 = req.query.pubKey2
+
+  if (
+    typeof eosId == 'undefined' ||
+    eosId == null ||
+    typeof pubKey1 == 'undefined' ||
+    pubKey1 == null ||
+    typeof pubKey2 == 'undefined' ||
+    pubKey2 == null
+  ) {
+    res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
+  } else {
+    trasnx
+      .newaccount(eosId, pubKey1, pubKey2)
+      .then(resp => {
+        res.send(resp)
+      })
+      .catch(next) // error passed on to the error handling route
+  }
 })
 
-app.get('/transfer', (req, res, next) => {
-  var memo = ''
-  transactions
-    .transfer(memo)
-    .then(resp => {
-      res.send(resp)
-    })
-    .catch(next) // error passed on to the error handling route
+/**
+ * Symmetric-key DB storage
+ *
+ * @param
+ * @returns
+ */
+app.get('/addsymmetrickey', (req, res, next) => {
+  const symmetricKey = req.query.key
+  const sesseionId = req.query.id
+  if (
+    typeof symmetricKey == 'undefined' ||
+    symmetricKey == null ||
+    typeof sesseionId == 'undefined' ||
+    sesseionId == null
+  ) {
+    res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
+  } else {
+    // Symmetric key DB storage
+    // query : sesseionId
+    try {
+      fs.writeFileSync(
+        './out/' + sesseionId + '-key.txt',
+        symmetricKey,
+        'utf-8'
+      )
+      console.log('File Write Done!')
+      res.send(true)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 })
 
-app.get('/get_table_rows', (req, res, next) => {
-  reading
-    .get_table_rows('omnione', 'omnione', 'diddoc')
-    .then(resp => {
-      res.send(resp)
+/**
+ * Symmetric-key DB query
+ *
+ * @param
+ * @returns
+ */
+app.get('/getsymmetrickey', (req, res, next) => {
+  const auth = req.query.auth
+  const sesseionId = req.query.id
+  const cost = req.query.cost
+  if (
+    typeof auth == 'undefined' ||
+    auth == null ||
+    typeof sesseionId == 'undefined' ||
+    sesseionId == null ||
+    typeof cost == 'undefined' ||
+    cost == null
+  ) {
+    res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
+  } else {
+    // Budget Confirm By Node
+    let balance = rdb.get_currency_balance('eosio.token', 'omnione', 'EOS')
+    var budget
+    balance.then(function(resp) {
+      // ex) resp : 100.0121 EOS
+      budget = parseFloat(resp.toString().split(' ')[0]).toFixed(4)
+      console.log(typeof budget + ', ' + budget)
     })
-    .catch(next) // error passed on to the error handling route
-})
 
-app.get('/get_currency_balance', (req, res, next) => {
-  reading
-    .get_currency_balance('eosio.token', 'omnione', 'EOS')
-    .then(resp => {
-      res.send(resp)
-    })
-    .catch(next) // error passed on to the error handling route
-})
-
-app.get('/get_account', (req, res, next) => {
-  reading
-    .get_account('omnione')
-    .then(resp => {
-      res.send(resp)
-    })
-    .catch(next) // error passed on to the error handling route
-})
-
-app.get('/get_block', (req, res, next) => {
-  reading
-    .get_block(1)
-    .then(resp => {
-      res.send(resp)
-    })
-    .catch(next)
+    budget = 10
+    // remain assert of sp > (day*3)
+    if (parseInt(budget) > 3 * cost) {
+      // Symmetric key DB query
+      // query : did, sesseionId
+      let data = fs.readFileSync('./out/' + sesseionId + '-key.txt', 'utf-8')
+      console.log('symmetrickey read: %s', data)
+      res.send(data + '\n')
+    }
+  }
 })
 
 app.listen(3000, () => {

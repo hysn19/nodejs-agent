@@ -17,7 +17,7 @@ const api = new Api({
 })
 
 // Sending a transaction
-async function newaccount(newaccountName) {
+async function newaccount(eosId, pubKey1, pubKey2) {
   try {
     const resp = await api.transact(
       {
@@ -33,13 +33,12 @@ async function newaccount(newaccountName) {
             ],
             data: {
               creator: 'eosio',
-              name: newaccountName,
+              name: eosId,
               owner: {
                 threshold: 1,
                 keys: [
                   {
-                    key:
-                      'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV',
+                    key: pubKey1,
                     weight: 1
                   }
                 ],
@@ -50,8 +49,7 @@ async function newaccount(newaccountName) {
                 threshold: 1,
                 keys: [
                   {
-                    key:
-                      'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV',
+                    key: pubKey2,
                     weight: 1
                   }
                 ],
@@ -71,7 +69,7 @@ async function newaccount(newaccountName) {
             ],
             data: {
               payer: 'eosio',
-              receiver: newaccountName,
+              receiver: eosId,
               bytes: 8192
             }
           },
@@ -86,7 +84,7 @@ async function newaccount(newaccountName) {
             ],
             data: {
               from: 'eosio',
-              receiver: newaccountName,
+              receiver: eosId,
               stake_net_quantity: '1.0000 EOS',
               stake_cpu_quantity: '1.0000 EOS',
               transfer: false
