@@ -10,17 +10,18 @@ const app = express()
 /**
  * Account registration
  *
- * @param
+ * @param id
+ * @param pubKey1
+ * @param pubKey2
  * @returns
  */
 app.get('/newaccount', (req, res, next) => {
-  const eosId = req.query.eosId
+  const id = req.query.id
   const pubKey1 = req.query.pubKey1
   const pubKey2 = req.query.pubKey2
-
   if (
-    typeof eosId == 'undefined' ||
-    eosId == null ||
+    typeof id == 'undefined' ||
+    id == null ||
     typeof pubKey1 == 'undefined' ||
     pubKey1 == null ||
     typeof pubKey2 == 'undefined' ||
@@ -29,7 +30,7 @@ app.get('/newaccount', (req, res, next) => {
     res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
   } else {
     trasnx
-      .newaccount(eosId, pubKey1, pubKey2)
+      .newaccount(id, pubKey1, pubKey2)
       .then(resp => {
         res.send(resp)
       })
@@ -40,33 +41,28 @@ app.get('/newaccount', (req, res, next) => {
 /**
  * Symmetric-key DB storage
  *
- * @param
+ * @param id
+ * @param key
  * @returns
  */
 app.get('/addsymmetrickey', (req, res, next) => {
-  const symmetricKey = req.query.key
   const sesseionId = req.query.id
+  const symmetricKey = req.query.key
   if (
-    typeof symmetricKey == 'undefined' ||
-    symmetricKey == null ||
     typeof sesseionId == 'undefined' ||
-    sesseionId == null
+    sesseionId == null ||
+    typeof symmetricKey == 'undefined' ||
+    symmetricKey == null
   ) {
     res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
   } else {
-    // Symmetric key DB storage
-    // query : sesseionId
-    try {
-      fs.writeFileSync(
-        './out/' + sesseionId + '-key.txt',
-        symmetricKey,
-        'utf-8'
-      )
-      console.log('File Write Done!')
-      res.send(true)
-    } catch (e) {
-      console.log(e)
-    }
+    // Symmetric key DB storage (condition : sesseionId)
+    fs.writeFileSync('./out/' + sesseionId + '-key.txt', symmetricKey, 'utf-8')
+    console.log(
+      'file write done. symmetrickey-file path: ./out/%s-key.txt',
+      sesseionId
+    )
+    res.send(true)
   }
 })
 
@@ -90,24 +86,28 @@ app.get('/getsymmetrickey', (req, res, next) => {
   ) {
     res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
   } else {
-    // Budget Confirm By Node
-    let balance = rdb.get_currency_balance('eosio.token', 'omnione', 'EOS')
-    var budget
-    balance.then(function(resp) {
-      // ex) resp : 100.0121 EOS
-      budget = parseFloat(resp.toString().split(' ')[0]).toFixed(4)
-      console.log(typeof budget + ', ' + budget)
-    })
-
-    budget = 10
-    // remain assert of sp > (day*3)
-    if (parseInt(budget) > 3 * cost) {
-      // Symmetric key DB query
-      // query : did, sesseionId
-      let data = fs.readFileSync('./out/' + sesseionId + '-key.txt', 'utf-8')
-      console.log('symmetrickey read: %s', data)
-      res.send(data + '\n')
-    }
+    rdb
+      .get_currency_balance('eosio.token', 'omnione', 'EOS')
+      .then(resp => {
+        console.log('balance resp: %s', resp)
+        // ex) resp : 100.0121 EOS
+        let budget = parseFloat(resp.toString().split(' ')[0])
+        // remain assert of budget > (cost * 3)
+        if (budget > parseInt(cost) * 3) {
+          // Symmetric key DB query (condition : did, sesseionId)
+          let data = fs.readFileSync(
+            './out/' + sesseionId + '-key.txt',
+            'utf-8'
+          )
+          console.log('symmetrickey read: %s', data)
+          res.send(data)
+        } else {
+          res.send(
+            JSON.parse('{"result":false, "message":"budget is not enough"}')
+          )
+        }
+      })
+      .catch(next) // error passed on to the error handling route
   }
 })
 
