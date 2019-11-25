@@ -69,7 +69,9 @@ app.get('/addsymmetrickey', (req, res, next) => {
 /**
  * Symmetric-key DB query
  *
- * @param
+ * @param id
+ * @param auth
+ * @parm cost
  * @returns
  */
 app.get('/getsymmetrickey', (req, res, next) => {
