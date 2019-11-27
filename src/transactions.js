@@ -8,7 +8,8 @@ const { TextDecoder, TextEncoder } = require('util') // node only
 const privateKeys = ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3']
 
 const signatureProvider = new JsSignatureProvider(privateKeys)
-const rpc = new JsonRpc('http://127.0.0.1:8888', { fetch })
+// const rpc = new JsonRpc('http://127.0.0.1:8888', { fetch })
+const rpc = new JsonRpc('http://10.0.0.44:18888', { fetch })
 const api = new Api({
   rpc,
   signatureProvider,
@@ -17,9 +18,9 @@ const api = new Api({
 })
 
 // Sending a transaction
-async function newaccount(eosId, pubKey1, pubKey2) {
+async function newdid(eosId, pubKey1, pubKey2) {
   try {
-    const resp = await api.transact(
+    return await api.transact(
       {
         actions: [
           {
@@ -85,8 +86,8 @@ async function newaccount(eosId, pubKey1, pubKey2) {
             data: {
               from: 'eosio',
               receiver: eosId,
-              stake_net_quantity: '1.0000 EOS',
-              stake_cpu_quantity: '1.0000 EOS',
+              stake_net_quantity: '0.0001 EOS',
+              stake_cpu_quantity: '0.0001 EOS',
               transfer: false
             }
           }
@@ -97,18 +98,16 @@ async function newaccount(eosId, pubKey1, pubKey2) {
         expireSeconds: 30
       }
     )
-    // --------------------------------
-    console.dir(resp)
-    return resp
   } catch (e) {
     console.log('\nCaught exception:' + e)
     if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
+    return JSON.stringify(e.json, null, 2)
   }
 }
 
 async function transfer(memo) {
   try {
-    const resp = await api.transact(
+    return await api.transact(
       {
         actions: [
           {
@@ -134,14 +133,12 @@ async function transfer(memo) {
         expireSeconds: 30
       }
     )
-    // --------------------------------
-    console.dir(resp)
-    return resp
   } catch (e) {
     console.log('\nCaught exception:' + e)
     if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
+    return JSON.stringify(e.json, null, 2)
   }
 }
 
-module.exports.newaccount = newaccount
+module.exports.newdid = newdid
 module.exports.transfer = transfer

@@ -15,7 +15,7 @@ const app = express()
  * @param pubKey2
  * @returns
  */
-app.get('/newaccount', (req, res, next) => {
+app.post('/newdid', (req, res, next) => {
   const id = req.query.id
   const pubKey1 = req.query.pubKey1
   const pubKey2 = req.query.pubKey2
@@ -29,12 +29,9 @@ app.get('/newaccount', (req, res, next) => {
   ) {
     res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
   } else {
-    trasnx
-      .newaccount(id, pubKey1, pubKey2)
-      .then(resp => {
-        res.send(resp)
-      })
-      .catch(next) // error passed on to the error handling route
+    trasnx.newdid(id, pubKey1, pubKey2).then(resp => {
+      res.send(resp)
+    })
   }
 })
 
