@@ -263,3 +263,8 @@ Caught exception:FetchError: request to http://10.0.0.44:18888/v1/chain/get_info
 2019-11-28T08:19:35.176Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
 2019-11-28T08:19:35.176Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
 2019-11-28T08:19:35.183Z [nodejs-agent] info: undefined
+2019-11-28T09:13:32.860Z [nodejs-agent] info: id: ay13hihkhnyg
+2019-11-28T09:13:32.861Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T09:13:32.861Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T09:13:32.863Z [nodejs-agent] info: undefined
+2019-11-28T09:14:22.732Z [nodejs-agent] info: staging server listening on port 3000

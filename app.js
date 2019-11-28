@@ -116,7 +116,12 @@ app.post('/addsymmetrickey', (req, res, next) => {
     typeof symmetricKey == 'undefined' ||
     symmetricKey == null
   ) {
-    res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
+    let resp = {
+      code: 400,
+      message: 'parameter is null',
+      body: {}
+    }
+    res.send(resp)
   } else {
     // Symmetric key DB storage (condition : sesseionId)
     fs.writeFileSync('./out/' + sesseionId + '-key.txt', symmetricKey, 'utf-8')
@@ -148,7 +153,12 @@ app.post('/getsymmetrickey', (req, res, next) => {
     typeof cost == 'undefined' ||
     cost == null
   ) {
-    res.send(JSON.parse('{"result":false, "message":"parameter is null"}'))
+    let resp = {
+      code: 400,
+      message: 'parameter is null',
+      body: {}
+    }
+    res.send(resp)
   } else {
     rdb
       .get_currency_balance('eosio.token', 'omnione', 'EOS')
