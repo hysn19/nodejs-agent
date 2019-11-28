@@ -25,7 +25,7 @@ async function newdid(eosId, pubKey1, pubKey2) {
         actions: [
           {
             account: 'eosio',
-            name: 'newaccount',
+            name: 'newdid',
             authorization: [
               {
                 actor: 'eosio',
@@ -99,9 +99,110 @@ async function newdid(eosId, pubKey1, pubKey2) {
       }
     )
   } catch (e) {
-    console.log('\nCaught exception:' + e)
-    if (e instanceof RpcError) console.log(JSON.stringify(e.json, null, 2))
-    return JSON.stringify(e.json, null, 2)
+    if (e instanceof RpcError) return e.json
+    else console.log('Caught exception: ' + e)
+  }
+}
+
+async function addauth() {
+  try {
+    return await api.transact(
+      {
+        actions: [
+          {
+            account: 'eosio',
+            name: 'addauth',
+            authorization: [
+              {
+                actor: 'eosio',
+                permission: 'active'
+              }
+            ],
+            data: {
+              from: 'swlee',
+              to: 'omnione',
+              quantity: '0.0001 EOS',
+              memo: memo
+            }
+          }
+        ]
+      },
+      {
+        blocksBehind: 3,
+        expireSeconds: 30
+      }
+    )
+  } catch (e) {
+    if (e instanceof RpcError) return e.json
+    else console.log('Caught exception: ' + e)
+  }
+}
+
+async function modifyauth() {
+  try {
+    return await api.transact(
+      {
+        actions: [
+          {
+            account: 'eosio',
+            name: 'modifyauth',
+            authorization: [
+              {
+                actor: 'eosio',
+                permission: 'active'
+              }
+            ],
+            data: {
+              from: 'swlee',
+              to: 'omnione',
+              quantity: '0.0001 EOS',
+              memo: memo
+            }
+          }
+        ]
+      },
+      {
+        blocksBehind: 3,
+        expireSeconds: 30
+      }
+    )
+  } catch (e) {
+    if (e instanceof RpcError) return e.json
+    else console.log('Caught exception: ' + e)
+  }
+}
+
+async function removeauth() {
+  try {
+    return await api.transact(
+      {
+        actions: [
+          {
+            account: 'eosio',
+            name: 'removeauth',
+            authorization: [
+              {
+                actor: 'eosio',
+                permission: 'active'
+              }
+            ],
+            data: {
+              from: 'swlee',
+              to: 'omnione',
+              quantity: '0.0001 EOS',
+              memo: memo
+            }
+          }
+        ]
+      },
+      {
+        blocksBehind: 3,
+        expireSeconds: 30
+      }
+    )
+  } catch (e) {
+    if (e instanceof RpcError) return e.json
+    else console.log('Caught exception: ' + e)
   }
 }
 
@@ -141,4 +242,7 @@ async function transfer(memo) {
 }
 
 module.exports.newdid = newdid
+module.exports.addauth = addauth
+module.exports.modifyauth = modifyauth
+module.exports.removeauth = removeauth
 module.exports.transfer = transfer

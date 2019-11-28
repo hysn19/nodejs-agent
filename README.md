@@ -12,7 +12,7 @@ The official distribution package can be found at [npm](https://www.npmjs.com/pa
 
 ### Add dependency to your project
 
-`yarn add express eosjs eosjs-ecc standard-ecies node-fetch localStorage`
+`yarn add express eosjs eosjs-ecc standard-ecies node-fetch localStorage body-parser app-root-path winston`
 
 ### Browser Distribution
 

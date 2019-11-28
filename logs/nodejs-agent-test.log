@@ -1,0 +1,265 @@
+2019-11-28T06:58:03.919Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T06:58:13.065Z [nodejs-agent] info: id: 4nrwjijtnqca
+2019-11-28T06:58:13.065Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T06:58:13.065Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T06:59:10.429Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T06:59:13.658Z [nodejs-agent] info: id: 4nrwjijtnqca
+2019-11-28T06:59:13.658Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T06:59:13.658Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T06:59:40.342Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T06:59:42.522Z [nodejs-agent] info: id: 4nrwjijtnqca
+2019-11-28T06:59:42.522Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T06:59:42.522Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T06:59:42.529Z [nodejs-agent] info: 
+Caught exception:FetchError: request to http://10.0.0.44:18888/v1/chain/get_info failed, reason: connect ECONNREFUSED 10.0.0.44:18888
+2019-11-28T07:00:14.849Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:00:17.852Z [nodejs-agent] info: id: 4nrwjijtnqca
+2019-11-28T07:00:17.852Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T07:00:17.852Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T07:00:17.858Z [nodejs-agent] info: Caught exception: FetchError: request to http://10.0.0.44:18888/v1/chain/get_info failed, reason: connect ECONNREFUSED 10.0.0.44:18888
+2019-11-28T07:05:47.069Z [nodejs-agent] info: id: qtutzricgutm
+2019-11-28T07:05:47.070Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T07:05:47.070Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T07:05:47.072Z [nodejs-agent] info: Caught exception: FetchError: request to http://10.0.0.44:18888/v1/chain/get_info failed, reason: connect ECONNREFUSED 10.0.0.44:18888
+2019-11-28T07:27:26.899Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:28:55.813Z [nodejs-agent] info: id: test1
+2019-11-28T07:28:55.813Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:28:55.814Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:29:56.999Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:29:59.999Z [nodejs-agent] info: id: test1
+2019-11-28T07:30:00.000Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:30:00.000Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:30:00.181Z [nodejs-agent] info: typeof resp: 
+2019-11-28T07:30:15.996Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:30:18.151Z [nodejs-agent] info: id: test1
+2019-11-28T07:30:18.151Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:30:18.151Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:30:18.381Z [nodejs-agent] info: object
+2019-11-28T07:30:59.769Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:31:02.868Z [nodejs-agent] info: id: test1
+2019-11-28T07:31:02.869Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:31:02.869Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:31:03.095Z [nodejs-agent] info: object
+2019-11-28T07:32:17.734Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:32:20.627Z [nodejs-agent] info: id: test1
+2019-11-28T07:32:20.628Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:32:20.628Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:32:20.809Z [nodejs-agent] info: object
+2019-11-28T07:32:20.809Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:32:52.573Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:32:57.300Z [nodejs-agent] info: id: test1
+2019-11-28T07:32:57.300Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:32:57.300Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:32:57.524Z [nodejs-agent] info: object
+2019-11-28T07:32:57.525Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:33:37.508Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:33:39.776Z [nodejs-agent] info: id: test1
+2019-11-28T07:33:39.776Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:33:39.776Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:33:40.002Z [nodejs-agent] info: object
+2019-11-28T07:33:40.002Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:33:53.765Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:34:14.382Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:34:17.441Z [nodejs-agent] info: id: test1
+2019-11-28T07:34:17.441Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:34:17.441Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:34:17.668Z [nodejs-agent] info: string
+2019-11-28T07:34:17.668Z [nodejs-agent] info: {
+  "code": 500,
+  "message": "Internal Service Error",
+  "error": {
+    "code": 3050001,
+    "name": "account_name_exists_exception",
+    "what": "Account name already exists",
+    "details": [
+      {
+        "message": "Cannot create account named test1, as that name is already taken",
+        "file": "eosio_contract.cpp",
+        "line_number": 97,
+        "method": "apply_eosio_newaccount"
+      }
+    ]
+  }
+}
+2019-11-28T07:34:17.668Z [nodejs-agent] info: {
+  "code": 500,
+  "message": "Internal Service Error",
+  "error": {
+    "code": 3050001,
+    "name": "account_name_exists_exception",
+    "what": "Account name already exists",
+    "details": [
+      {
+        "message": "Cannot create account named test1, as that name is already taken",
+        "file": "eosio_contract.cpp",
+        "line_number": 97,
+        "method": "apply_eosio_newaccount"
+      }
+    ]
+  }
+}
+2019-11-28T07:35:06.270Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:35:08.140Z [nodejs-agent] info: id: test1
+2019-11-28T07:35:08.140Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:35:08.140Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:35:08.332Z [nodejs-agent] info: string
+2019-11-28T07:35:08.332Z [nodejs-agent] info: {
+  "code": 500,
+  "message": "Internal Service Error",
+  "error": {
+    "code": 3050001,
+    "name": "account_name_exists_exception",
+    "what": "Account name already exists",
+    "details": [
+      {
+        "message": "Cannot create account named test1, as that name is already taken",
+        "file": "eosio_contract.cpp",
+        "line_number": 97,
+        "method": "apply_eosio_newaccount"
+      }
+    ]
+  }
+}
+2019-11-28T07:35:08.333Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:35:32.280Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:35:50.731Z [nodejs-agent] info: id: test1
+2019-11-28T07:35:50.731Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:35:50.732Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:35:50.896Z [nodejs-agent] info: string
+2019-11-28T07:35:50.896Z [nodejs-agent] info: {
+  "code": 500,
+  "message": "Internal Service Error",
+  "error": {
+    "code": 3050001,
+    "name": "account_name_exists_exception",
+    "what": "Account name already exists",
+    "details": [
+      {
+        "message": "Cannot create account named test1, as that name is already taken",
+        "file": "eosio_contract.cpp",
+        "line_number": 97,
+        "method": "apply_eosio_newaccount"
+      }
+    ]
+  }
+}
+2019-11-28T07:35:50.896Z [nodejs-agent] info: "{\n  \"code\": 500,\n  \"message\": \"Internal Service Error\",\n  \"error\": {\n    \"code\": 3050001,\n    \"name\": \"account_name_exists_exception\",\n    \"what\": \"Account name already exists\",\n    \"details\": [\n      {\n        \"message\": \"Cannot create account named test1, as that name is already taken\",\n        \"file\": \"eosio_contract.cpp\",\n        \"line_number\": 97,\n        \"method\": \"apply_eosio_newaccount\"\n      }\n    ]\n  }\n}"
+2019-11-28T07:36:28.672Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:36:30.484Z [nodejs-agent] info: id: test1
+2019-11-28T07:36:30.484Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:36:30.484Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:36:30.732Z [nodejs-agent] info: string
+2019-11-28T07:37:30.790Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:37:33.538Z [nodejs-agent] info: id: test1
+2019-11-28T07:37:33.539Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:37:33.539Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:37:33.766Z [nodejs-agent] info: object
+2019-11-28T07:38:21.381Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:38:23.590Z [nodejs-agent] info: id: test1
+2019-11-28T07:38:23.591Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:38:23.591Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:38:23.855Z [nodejs-agent] info: undefined
+2019-11-28T07:38:53.330Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:39:14.445Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:39:17.368Z [nodejs-agent] info: id: test1
+2019-11-28T07:39:17.369Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:39:17.369Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:39:17.531Z [nodejs-agent] info: object
+2019-11-28T07:39:17.532Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:39:38.309Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:39:41.898Z [nodejs-agent] info: id: test1
+2019-11-28T07:39:41.898Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:39:41.898Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:39:42.182Z [nodejs-agent] info: object
+2019-11-28T07:40:06.986Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:40:09.145Z [nodejs-agent] info: id: test1
+2019-11-28T07:40:09.145Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:40:09.145Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:40:09.317Z [nodejs-agent] info: object
+2019-11-28T07:41:47.204Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:41:49.919Z [nodejs-agent] info: id: test1
+2019-11-28T07:41:49.919Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:41:49.919Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:41:50.120Z [nodejs-agent] info: object
+2019-11-28T07:41:50.120Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:42:24.127Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:42:25.936Z [nodejs-agent] info: id: test1
+2019-11-28T07:42:25.936Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:42:25.936Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:42:26.210Z [nodejs-agent] info: object
+2019-11-28T07:43:16.880Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:43:19.313Z [nodejs-agent] info: id: test1
+2019-11-28T07:43:19.313Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:43:19.313Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:43:19.543Z [nodejs-agent] info: object
+2019-11-28T07:43:19.543Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:43:21.275Z [nodejs-agent] info: id: test1
+2019-11-28T07:43:21.275Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:43:21.275Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:43:21.462Z [nodejs-agent] info: object
+2019-11-28T07:43:21.463Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:44:03.360Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:44:05.377Z [nodejs-agent] info: id: test1
+2019-11-28T07:44:05.377Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:44:05.377Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:44:05.628Z [nodejs-agent] info: object
+2019-11-28T07:44:05.628Z [nodejs-agent] info: Internal Service Error
+2019-11-28T07:44:20.610Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:44:22.214Z [nodejs-agent] info: id: test1
+2019-11-28T07:44:22.214Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:44:22.214Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:44:22.443Z [nodejs-agent] info: object
+2019-11-28T07:45:27.334Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:45:29.159Z [nodejs-agent] info: id: test1
+2019-11-28T07:45:29.159Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:45:29.159Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:45:29.403Z [nodejs-agent] info: object
+2019-11-28T07:45:53.852Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:45:55.839Z [nodejs-agent] info: id: test1
+2019-11-28T07:45:55.839Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:45:55.839Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:45:56.005Z [nodejs-agent] info: object
+2019-11-28T07:48:39.632Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:48:42.525Z [nodejs-agent] info: id: test1
+2019-11-28T07:48:42.525Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:48:42.525Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:48:42.789Z [nodejs-agent] info: object
+2019-11-28T07:49:27.110Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:49:28.981Z [nodejs-agent] info: id: test1
+2019-11-28T07:49:28.981Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:49:28.981Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:49:29.150Z [nodejs-agent] info: object
+2019-11-28T07:49:42.089Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:49:43.961Z [nodejs-agent] info: id: test1
+2019-11-28T07:49:43.961Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:49:43.961Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:49:44.193Z [nodejs-agent] info: object
+2019-11-28T07:50:12.668Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:50:14.895Z [nodejs-agent] info: id: test1
+2019-11-28T07:50:14.895Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:50:14.895Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:50:15.123Z [nodejs-agent] info: object
+2019-11-28T07:54:11.303Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T07:54:13.961Z [nodejs-agent] info: id: test1
+2019-11-28T07:54:13.961Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:54:13.962Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T07:54:14.229Z [nodejs-agent] info: object
+2019-11-28T08:01:36.732Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T08:01:39.836Z [nodejs-agent] info: id: test1
+2019-11-28T08:01:39.836Z [nodejs-agent] info: pubKey1: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T08:01:39.836Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T08:01:40.064Z [nodejs-agent] info: object
+2019-11-28T08:01:59.567Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T08:04:23.964Z [nodejs-agent] info: id: test1
+2019-11-28T08:04:23.964Z [nodejs-agent] info: pubKey1: 
+2019-11-28T08:04:23.964Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T08:04:24.001Z [nodejs-agent] info: undefined
+2019-11-28T08:04:27.024Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T08:04:49.757Z [nodejs-agent] info: id: test1
+2019-11-28T08:04:49.757Z [nodejs-agent] info: pubKey1: undefined
+2019-11-28T08:04:49.757Z [nodejs-agent] info: pubKey2: EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+2019-11-28T08:12:55.956Z [nodejs-agent] info: staging server listening on port 3000
+2019-11-28T08:19:35.175Z [nodejs-agent] info: id: ay13hihkhnyg
+2019-11-28T08:19:35.176Z [nodejs-agent] info: pubKey1: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T08:19:35.176Z [nodejs-agent] info: pubKey2: EOS83tPDUNoYv41vNHAC87Ms6XT5mFtqb7xv7NhMCwDLRLmDcGfEa
+2019-11-28T08:19:35.183Z [nodejs-agent] info: undefined
