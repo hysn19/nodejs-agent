@@ -8,8 +8,8 @@ const { TextDecoder, TextEncoder } = require('util') // node only
 const privateKeys = ['5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3']
 
 const signatureProvider = new JsSignatureProvider(privateKeys)
-// const rpc = new JsonRpc('http://127.0.0.1:8888', { fetch })
-const rpc = new JsonRpc('http://10.0.0.44:18888', { fetch })
+// const rpc = new JsonRpc('http://10.0.0.44:8888', { fetch }) // seung-wook-pc
+const rpc = new JsonRpc('http://15.164.140.232:18888', { fetch }) // aws-test
 const api = new Api({
   rpc,
   signatureProvider,
@@ -18,86 +18,96 @@ const api = new Api({
 })
 
 // Sending a transaction
-async function newdid(eosId, pubKey1, pubKey2) {
+async function newdid(did, ownerkeyid, ownerpubkey, activekeyid, activepubkey) {
+  console.log('did: ' + did)
+  console.log('ownerkeyid: ' + ownerkeyid)
+  console.log('ownerpubkey: ' + ownerpubkey)
+  console.log('activekeyid: ' + activekeyid)
+  console.log('activepubkey: ' + activepubkey)
   try {
-    return await api.transact(
-      {
-        actions: [
-          {
-            account: 'eosio',
-            name: 'newdid',
-            authorization: [
-              {
-                actor: 'eosio',
-                permission: 'active'
-              }
-            ],
-            data: {
-              creator: 'eosio',
-              name: eosId,
-              owner: {
-                threshold: 1,
-                keys: [
-                  {
-                    key: pubKey1,
-                    weight: 1
-                  }
-                ],
-                accounts: [],
-                waits: []
-              },
-              active: {
-                threshold: 1,
-                keys: [
-                  {
-                    key: pubKey2,
-                    weight: 1
-                  }
-                ],
-                accounts: [],
-                waits: []
-              }
+    let transaction = {
+      actions: [
+        {
+          account: 'eosio',
+          name: 'newdid',
+          authorization: [
+            {
+              actor: 'eosio',
+              permission: 'active'
             }
-          },
-          {
-            account: 'eosio',
-            name: 'buyrambytes',
-            authorization: [
-              {
-                actor: 'eosio',
-                permission: 'active'
-              }
-            ],
-            data: {
-              payer: 'eosio',
-              receiver: eosId,
-              bytes: 8192
-            }
-          },
-          {
-            account: 'eosio',
-            name: 'delegatebw',
-            authorization: [
-              {
-                actor: 'eosio',
-                permission: 'active'
-              }
-            ],
-            data: {
-              from: 'eosio',
-              receiver: eosId,
-              stake_net_quantity: '0.0001 EOS',
-              stake_cpu_quantity: '0.0001 EOS',
-              transfer: false
+          ],
+          data: {
+            creator: 'eosio',
+            did: did,
+            ownerkeyid: ownerkeyid,
+            activekeyid: activekeyid,
+            owner: {
+              threshold: 1,
+              keys: [
+                {
+                  key: ownerpubkey,
+                  weight: 1
+                }
+              ],
+              accounts: [],
+              waits: []
+            },
+            active: {
+              threshold: 1,
+              keys: [
+                {
+                  key: activepubkey,
+                  weight: 1
+                }
+              ],
+              accounts: [],
+              waits: []
             }
           }
-        ]
-      },
-      {
-        blocksBehind: 3,
-        expireSeconds: 30
-      }
-    )
+        },
+        {
+          account: 'eosio',
+          name: 'buyrambytes',
+          authorization: [
+            {
+              actor: 'eosio',
+              permission: 'active'
+            }
+          ],
+          data: {
+            payer: 'eosio',
+            receiver: did,
+            bytes: 8192
+          }
+        },
+        {
+          account: 'eosio',
+          name: 'delegatebw',
+          authorization: [
+            {
+              actor: 'eosio',
+              permission: 'active'
+            }
+          ],
+          data: {
+            from: 'eosio',
+            receiver: did,
+            stake_net_quantity: '0.0001 EOS',
+            stake_cpu_quantity: '0.0001 EOS',
+            transfer: false
+          }
+        }
+      ]
+    }
+    console.dir(transaction)
+    console.dir(transaction.actions[0])
+    console.dir(transaction.actions[1])
+    console.dir(transaction.actions[2])
+
+    return await api.transact(transaction, {
+      blocksBehind: 3,
+      expireSeconds: 30
+    })
   } catch (e) {
     if (e instanceof RpcError) return e.json
     else console.log('Caught exception: ' + e)

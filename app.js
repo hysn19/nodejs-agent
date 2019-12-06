@@ -5,7 +5,7 @@ var fs = require('fs')
 
 const trasnx = require('./src/transactions')
 const rdb = require('./src/reading-blockchain')
-const logger = require('./config/winston')
+// const logger = require('./config/winston')
 
 const app = express()
 
@@ -22,20 +22,22 @@ app.use(bodyParser.urlencoded({ extended: true }))
  * @returns
  */
 app.post('/newdid', (req, res, next) => {
-  const id = req.body.id
-  const pubKey1 = req.body.pubKey1
-  const pubKey2 = req.body.pubKey2
-  logger.info('id: ' + id)
-  logger.info('pubKey1: ' + pubKey1)
-  logger.info('pubKey2: ' + pubKey2)
-
+  const did = req.body.did
+  const ownerkeyid = req.body.keyId1
+  const ownerpubkey = req.body.pubKey1
+  const activekeyid = req.body.keyId2
+  const activepubkey = req.body.pubKey2
   if (
-    typeof id == 'undefined' ||
-    id == null ||
-    typeof pubKey1 == 'undefined' ||
-    pubKey1 == null ||
-    typeof pubKey2 == 'undefined' ||
-    pubKey2 == null
+    typeof did == 'undefined' ||
+    did == null ||
+    typeof ownerkeyid == 'undefined' ||
+    ownerkeyid == null ||
+    typeof ownerpubkey == 'undefined' ||
+    ownerpubkey == null ||
+    typeof activekeyid == 'undefined' ||
+    activekeyid == null ||
+    typeof activepubkey == 'undefined' ||
+    activepubkey == null
   ) {
     let resp = {
       code: 400,
@@ -44,61 +46,43 @@ app.post('/newdid', (req, res, next) => {
     }
     res.send(resp)
   } else {
-    trasnx.newdid(id, pubKey1, pubKey2).then(resp => {
-      logger.info(typeof resp)
-      if (typeof /s/ === 'object') {
-        if (resp.transaction_id != undefined) {
-          let success = {
-            code: 200,
-            message: 'success',
-            body: {
-              id: resp.processed.id,
-              block_num: resp.processed.block_num
+    trasnx
+      .newdid(did, ownerkeyid, ownerpubkey, activekeyid, activepubkey)
+      .then(resp => {
+        // console.log(typeof resp)
+        if (typeof /s/ === 'object') {
+          if (resp.transaction_id != undefined) {
+            let success = {
+              code: 200,
+              message: 'success',
+              body: {
+                id: resp.processed.id,
+                block_num: resp.processed.block_num
+              }
             }
-          }
-          console.log(success)
-          res.send(success)
-        } else {
-          let fail = {
-            code: resp.code,
-            message: resp.message,
-            body: {
-              code: resp.error.code,
-              // name: resp.error.name,
-              what: resp.error.what
+            console.log(success)
+            res.send(success)
+          } else {
+            // console.log(resp)
+            console.log(resp.error)
+            let fail = {
+              code: resp.code,
+              message: resp.message,
+              body: {
+                code: resp.error.code,
+                what: resp.error.what
+              }
             }
+            res.send(fail)
           }
-          console.log(fail)
-          res.send(fail)
         }
-      }
-      if (typeof resp == 'string') {
-        console.log(resp)
-        res.send(resp)
-      }
-    })
+        if (typeof resp == 'string') {
+          console.log(resp)
+          res.send(resp)
+        }
+      })
   }
 })
-
-// ------------------------------------- /
-// node contract api test action
-// ------------------------------------- /
-app.get('/addauth', (req, res, next) => {
-  trasnx.addauth().then(resp => {
-    console.log(resp)
-  })
-})
-app.get('/modifyauth', (req, res, next) => {
-  trasnx.modifyauth().then(resp => {
-    console.log(resp)
-  })
-})
-app.get('/removeauth', (req, res, next) => {
-  trasnx.removeauth().then(resp => {
-    console.log(resp)
-  })
-})
-// ------------------------------------- /
 
 /**
  * Symmetric-key DB storage
@@ -125,7 +109,7 @@ app.post('/addsymmetrickey', (req, res, next) => {
   } else {
     // Symmetric key DB storage (condition : sesseionId)
     fs.writeFileSync('./out/' + sesseionId + '-key.txt', symmetricKey, 'utf-8')
-    logger.info(
+    console.log(
       'file write done. symmetrickey-file path: ./out/%s-key.txt',
       sesseionId
     )
@@ -160,10 +144,13 @@ app.post('/getsymmetrickey', (req, res, next) => {
     }
     res.send(resp)
   } else {
+    // did-auth parsing
+    const didauth = JSON.parse(auth)
+    console.dir(didauth.id)
     rdb
       .get_currency_balance('eosio.token', 'omnione', 'EOS')
       .then(resp => {
-        logger.info('balance resp: %s', resp)
+        console.log('balance resp: %s', resp)
         // ex) resp : 100.0121 EOS
         let budget = parseFloat(resp.toString().split(' ')[0])
         // remain assert of budget > (cost * 3)
@@ -173,7 +160,7 @@ app.post('/getsymmetrickey', (req, res, next) => {
             './out/' + sesseionId + '-key.txt',
             'utf-8'
           )
-          logger.info('symmetrickey read: %s', data)
+          console.log('symmetrickey read: %s', data)
           res.send(data)
         } else {
           res.send(
@@ -186,5 +173,5 @@ app.post('/getsymmetrickey', (req, res, next) => {
 })
 
 app.listen(3000, () => {
-  logger.info('staging server listening on port 3000')
+  console.log('staging server listening on port 3000')
 })

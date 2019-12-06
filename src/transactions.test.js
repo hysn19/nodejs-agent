@@ -5,9 +5,14 @@ const trasnx = require('./transactions')
 
 describe('Transaction API', () => {
   it('newdid', function() {
-    const accountName = 'test1' // required EOS NameType
-    const pubKey = 'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
-    const resp = trasnx.newdid(accountName, pubKey, pubKey)
+    const did = 'swlee.did' // required EOS NameType
+    const keyId1 = 'key1'
+    const pubKey1 = 'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
+    const keyId2 = 'key1'
+    const pubKey2 = 'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
+    trasnx.newdid(did, keyId1, pubKey1, keyId2, pubKey2).then(resp => {
+      console.log(resp)
+    })
   })
   // it('transfer', function() {
   //   const memo = ''

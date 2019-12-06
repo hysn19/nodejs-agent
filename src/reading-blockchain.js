@@ -1,7 +1,8 @@
 // reading-blockchain.js
 const { JsonRpc, RpcError } = require('eosjs')
 const fetch = require('node-fetch') // node only; not needed in browsers
-const rpc = new JsonRpc('http://127.0.0.1:8888', { fetch })
+// const rpc = new JsonRpc('http://127.0.0.1:8888', { fetch })
+const rpc = new JsonRpc('http://10.0.0.44:8888', { fetch }) // seung-wook-pc
 
 // Get table rows
 async function get_table_rows(contract, account, table) {
